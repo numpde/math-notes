@@ -1,0 +1,491 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amsfonts}
+
+%
+\usepackage{fullpage}
+\setlength{\parindent}{0cm}
+
+% For editing purposes:
+%\usepackage[margin=10pt]{geometry}
+
+% Macros
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\scalar}[2]{\langle#1\rangle_{#2}}
+\newcommand{\from}{\colon}
+
+
+\begin{document}
+	
+	\section*{A note on [KB/2020]}
+	
+	%
+	
+	\subsection*{Introduction}
+	
+	%
+	
+	
+	Let $V \hookrightarrow H \cong H' \hookrightarrow V'$
+	be a Gelfand triple of separable Hilbert spaces with dense and continuous embeddings.
+	%
+	We write $\norm{\cdot}{X}$ for the norm on $X$,
+	and
+	$\scalar{\cdot, \cdot}{}$ for the duality pairing on $V' \times V$.
+	%
+	Let $V_n \subset V$ be nontrivial finite-dimensional subspaces, 
+	parameterized by $n \geq 1$.
+	%
+	Let $Q_n \from V' \to V_n$ denote the $H$-orthogonal projection.
+	Let $P_n \from V' \to V_n$ denote the $V$-orthogonal projection.
+	%
+	We assume that
+	\begin{align}
+		\label{e:P}
+		%
+		\forall v \in V:
+		\quad
+		\norm{v - P_n v}{V} = o(\norm{v}{V})
+		\quad\text{as}\quad
+		n \to \infty
+		.
+	\end{align}
+	
+	We abbreviate $\norm{\cdot}{V} := \norm{\cdot}{\mathcal{L}(V)}$ 
+	for the operator norm,
+	for example
+	$\norm{Q_n}{V} := \norm{Q_n|_V}{\mathcal{L}(V)}$.
+	%
+	%
+	Recall [S/2006]
+	that for any nontrivial idempotent operator $Q \from V \to V$ we have
+	\begin{align}
+		\label{e:IQ}
+		%
+		\norm{Q}{V} = \norm{I - Q}{V}
+		.
+	\end{align}
+	%
+	%
+	%
+	Therefore, for any $v \in V$ and $n \geq 1$,
+	\begin{align}
+		\norm{v - P_n v}{V}
+		\leq
+		\norm{v - Q_n v}{V}
+		& =
+		\norm{(I - Q_n)(v - P_n v)}{V}
+		%
+		\\
+		% 
+		& \leq
+		\norm{I - Q_n}{V} \norm{v - P_n v}{V}
+		=
+		\norm{Q_n}{V} \norm{v - P_n v}{V}
+		.
+	\end{align}
+	
+	%
+	
+	
+	%
+	
+	\subsection*{First characterization}
+	
+	%
+	
+	Consider the statements
+	\begin{align}
+		\label{e:1}
+		%
+		\sup_{v \in V}
+		\frac{
+			\norm{v - Q_n v}{V}
+		}{
+			\norm{v - P_n v}{V}
+		}
+		\to 1
+		\quad\text{as}\quad
+		n \to \infty
+	\end{align}
+	and
+	\begin{align}
+		\label{e:Q1}
+		%
+		\norm{Q_n}{V} \to 1
+		\quad\text{as}\quad
+		n \to \infty
+		.
+	\end{align}
+	
+	%
+	
+	Clearly, \eqref{e:Q1} implies \eqref{e:1}.
+	%
+	Conversely, 
+	\eqref{e:1} implies
+	$
+		\norm{Q_n}{V} = \norm{I - Q_n}{V}
+		=
+		(1 + o(1))
+		\norm{I - P_n}{V}
+		=
+		(1 + o(1))
+		\norm{P_n}{V}
+		\to 1
+	$
+	as $n \to \infty$.
+	%
+%	Or:
+%	if \eqref{e:1} does not hold,
+%	e.g.~if
+%	\begin{align}
+%		\norm{I - Q_n}{V} \norm{v}{V}
+%		\geq 
+%		\norm{v - Q_n v}{V} 
+%		\geq 
+%		(1 + \varepsilon) \norm{v - P_n v}{V}
+%		\geq 
+%		(1 + \varepsilon) \norm{v}{V}
+%		,
+%	\end{align}
+%	then
+%	the identity \eqref{e:IQ} implies
+%	$\norm{Q_n}{V} \geq 1 + \varepsilon$.
+	%
+	Therefore, 
+	\begin{align}
+		\eqref{e:1}
+		\Leftrightarrow
+		\eqref{e:Q1}
+		.
+	\end{align}
+	
+	%
+	
+	\subsection*{Second characterization}
+	
+	%
+	
+	It was shown in [A/2013, Lemma 6.2] that,
+	for any $\kappa > 0$,
+	the statements
+	\begin{align}
+		\label{e:A-Qk}
+		%
+		\norm{Q_n}{V} \leq \kappa^{-1}
+	\end{align}
+	and
+	\begin{align}
+		\label{e:A-Vk}
+		%
+		\forall v' \in V_n:
+		\quad
+		\sup_{v \in V_n}
+		\frac{
+			\scalar{v', v}{}
+		}{
+			\norm{v}{V}
+		}
+		\geq
+		\kappa
+		\norm{v'}{V'} 
+	\end{align}
+	are equivalent.
+	%
+	%
+	The latter statement is a measure of self-duality of $V_n \subset V$.
+	%
+	%
+	In the following, $0 \leq \kappa^*(V_n) \leq 1$ denotes 
+	the maximal $\kappa$
+	for any closed subspace $V_n \subset V$.
+	
+	%
+	
+	\subsection*{Third characterization (special setting)}
+	
+	%
+	
+%	Let 
+%	$V_J \subset V_{J + 1} \subset H$
+%	be another nested sequence of nontrivial finite-dimensional subspaces,
+%	whose union is dense in $H$.
+%	%
+%	Assume
+%	the projection $Z_J \from V \to V_J$
+%	is orthogonal
+%	both
+%	in $V$ and $H$.
+%	%
+%	We abbreviate $v_J := Z_J$ and $v_{-J} := (I - Z_J) v$.
+	%
+	%
+	%
+	The setting of [KB/2020]
+	is atypical for Gelfand triples
+	in that 
+	\begin{align}
+		\norm{\cdot}{V} \sim \norm{\cdot}{H}
+		\ 
+		\text{are equivalent norms}
+		.
+	\end{align}
+	%
+	We assume this from now on.
+	%
+	%
+	In particular,
+	\eqref{e:A-Qk}
+	holds uniformly in $n$ with \emph{some} $\kappa$,
+	because
+	$c \norm{Q_n v}{V} \leq \norm{Q_n v}{H} \leq \norm{v}{H} \leq C \norm{v}{V}$,
+	and therefore the arguments in the introduction show that
+	\eqref{e:P} also holds for $Q_n$.
+	%
+%	Consequently, 
+%	for each $J$,
+%	we have 
+%	\begin{align}
+%		\label{e:QJ}
+%		%
+%		\norm{(P_n - Q_n) v_J}{V}
+%		\leq
+%		o_n^J
+%		\norm{v_J}{V}
+%		\quad
+%		\text{uniformly in $v$}
+%	\end{align}
+%	where $o_n^J \searrow 0$ as $n \to \infty$.
+	%
+	%
+	%
+	In this context, [KB/2020]
+	propose a condition,
+	which translates to the following:
+	%
+	Suppose $\{ \varphi_j \}_{j \geq 1}$
+	is an orthonormal basis for $H$
+	that is also orthogonal in $V$.
+	%
+	Then:
+	\begin{align}
+		\label{e:III}
+		%
+		\text{
+			$w_j := \norm{\varphi_j}{V} \to a$ as $j \to \infty$,
+			for some $a > 0$.
+		}
+	\end{align}
+
+	%
+	
+	For each $J \geq 1$,
+	define the subspace $W_J \subset V$ as the span of 
+	$\varphi_j$ with $j \leq J$,
+	and
+	$W_{-J} \subset V$ as the span of those with $j > J$.
+	%
+	%
+	Those subspace are self-dual, 
+	because
+	$\kappa = 1$ in \eqref{e:A-Vk}
+	for 
+	any $V_n$ that is a linear span 
+	of finitely many $\varphi_j$,
+	and $P_n = Q_n$ on such subspaces.
+	%
+	For this reason alone, 
+	\begin{align}
+		\text{
+			\eqref{e:Q1}
+			does not imply
+			\eqref{e:III}
+			.
+		}
+	\end{align}
+	%
+	%
+	What is more, the subspace $V_n$
+	could be at some angle to all such subspaces.
+	%
+	%
+	For example, take an arbitrary nonzero sequence $c \in \ell_2(\IN)$.
+	%
+	%
+	Define $V_1$ as the span of $\varphi := \sum_j c_j \varphi_j$.
+	%
+	%
+	Then
+	\begin{align}
+		\textstyle
+		\norm{\varphi}{V'}^2
+		=
+		\sum_j c_j^2 w_j^{-2}
+		,
+		\quad
+		\norm{\varphi}{H}^2
+		=
+		\sum_j c_j^2
+		,
+		\quad
+		\norm{\varphi}{V}^2
+		=
+		\sum_j c_j^2 w_j^2
+		.
+	\end{align}
+	%
+	%
+	Therefore, the $\kappa$ in \eqref{e:A-Vk}
+	is at best
+	\begin{align}
+		\kappa^\star
+		(V_1)
+		:=
+		\frac{
+			\norm{\varphi}{H}^2
+		}{
+			\norm{\varphi}{V'}
+			\norm{\varphi}{V}
+		}
+		\geq \kappa
+		.
+	\end{align}
+	%
+	%
+	Suppose only $c_1 \neq 0$ and $c_2 \neq 0$
+	and
+	$w_2 = w_3 = \ldots$.
+	%
+	Then, for large $w_1$ we have 
+	$
+		\kappa^\star(V_1) \approx \frac{1}{w_1}(\frac{c_1}{c_2} + \frac{c_2}{c_1})
+	$,
+	which can be arbitrarily small.
+	%
+	Condition \eqref{e:III}
+	is meant to moderate this behavior.
+	%
+	Indeed, 
+	condition \eqref{e:III} 
+	constrains the spread of $w_j$,
+	i.e.~it is equivalent to
+	\begin{align}
+		\omega_{-J}
+		:=
+		\frac{
+			\sup_{j > J} w_j
+		}{
+			\inf_{j > J} w_j
+		}
+		\to 1
+		\quad\text{as}\quad 
+		J \to \infty
+		.
+	\end{align}
+	%
+	It follows that
+	$
+		\kappa^\star(W_{-J}) \geq 1 / \omega_{-J}
+		\to 1
+	$
+	as
+	$J \to \infty$.
+	%
+	%
+	
+	
+	
+	
+	
+	
+%	Consider now the following quasi-orthogonality condition
+%	\begin{align}
+%		\label{e:Q-J}
+%		%
+%		\norm{(P_n - Q_n) v_{-J}}{V}
+%		\leq
+%		o_J
+%		\norm{v_{-J}}{V}
+%		\quad
+%		\text{uniformly in $v$ and $n$}
+%		,
+%	\end{align}
+%	where $o_J \searrow 0$ as $J \to \infty$.
+%	%
+%	%
+%	In other words
+%	(but without proof), 
+%	the equivalence $\norm{\cdot}{V} \sim \norm{\cdot}{H}$ tends to equality
+%	outside of $V_J$ as $J \to \infty$.
+%	
+%	%
+%	
+%	\textbf{Claim 1}:
+%	$\eqref{e:Q-J} \Rightarrow \eqref{e:Q1}$.
+%	%
+%	%
+%	Indeed, for any given $\varepsilon > 0$,
+%	we can choose $J$
+%	and then $n$ large enough 
+%	such that $o_n^J \leq o_J \leq \varepsilon$.
+%	%
+%	Take any $v \in V$.
+%	%
+%	Then, using \eqref{e:QJ} and \eqref{e:Q-J},
+%	\begin{align}
+%		\norm{Q_n v}{V}
+%		\leq
+%		\norm{(P_n - Q_n) v_J}{V}
+%		+
+%		\norm{(P_n - Q_n) v_{-J}}{V}
+%		+
+%		\norm{P_n v}{V}
+%		\leq
+%		(1 + 2 \varepsilon) \norm{v}{V}
+%		.
+%	\end{align}
+%	%
+%	Whence \eqref{e:Q1}.
+%	
+%	%
+%	
+%	\textbf{Claim 2}:
+%	$\eqref{e:Q-J} \Leftarrow \eqref{e:Q1}$.
+%	%
+%	%
+%	
+%	If \eqref{e:J} fails, then
+%	for arbitrary large $J$
+%	for every $\varepsilon > 0$
+%	there exist $v$ and $n$ 
+%	such that
+%	$\norm{Q_n v_{-J}}{V} > (1 + \varepsilon) \norm{v_{-J}}{V}$.
+	 
+	
+
+	\section*{References}
+
+	[KB/2020]
+	K.~Kirchner, D.~Bolin.
+	Necessary and sufficient conditions for asymptotically optimal linear prediction of random fields on compact metric spaces.
+	arXiv:2005.08904.
+	
+	[S/2006]
+	D.~B.~Szyld.
+	The many proofs of an identity on the norm of oblique projections.
+	Numer.~Algorithms, 42(2006), 309--323.
+	
+	[A/2013]
+	R.~Andreev.
+	Stability of sparse space--time finite element discretizations of linear parabolic
+	evolution equations.
+	IMAJNA, 33(2013), 242--260.
+	
+	\vfill
+	\hfill
+	RA, \today
+\end{document}
